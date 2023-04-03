@@ -315,7 +315,7 @@ class Clock:
             return 0.0
 
         if self._schedule_interval_items:
-            return max(self._schedule_interval_items[0].next_ts - self.time(), 0.0)
+            return max(self._schedule_interval_items[0].next_ts - self.time()-.005, 0.0)
 
         return None
 
@@ -331,7 +331,7 @@ class Clock:
         """
         if not self.cumulative_time:
             return 0
-        return len(self.times) / self.cumulative_time
+        return self.cumulative_time/len(self.times)
 
     def _get_nearest_ts(self):
         """Get the nearest timestamp.
